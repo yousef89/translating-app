@@ -1,22 +1,18 @@
 "use client"
 import { useState } from "react";
 
-export default function TranslateTo() {
 
-    const [inputValue , setInputValue] = useState("");
+export default function TranslateTo({data}) {
 
-    function inputValueHandler(event){
-        setInputValue(event.target.value);
-    }
 
     return (
       <div className="w-[560px] z-10 font-dm-sans font-semibold flex flex-col justify-center items-center bg-[#121826cc] rounded-[20px] bg-opacity-5">
 
         <div className="flex items-center justify-center pt-7 pl-7 w-[550px]">
-            <div className="flex text-[15px] text-[#626874] gap-x-6  text-opacity-70 mr-auto">
-                <button>English</button>
-                <button>French</button>
-                <button>Spanish</button>
+            <div className="flex text-[15px] text-[#626874] gap-x-[5px]  text-opacity-70 mr-auto">
+                <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">English</button>
+                <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">French</button>
+                <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">Spanish</button>
             </div>
             <svg className="mr-[220px]" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 6L8 10L4 6" stroke="#6C727F" stroke-width="2"/>
@@ -35,8 +31,7 @@ export default function TranslateTo() {
         <input 
           className="text-[#F1F2F3] border-none outline-none w-[500px] text-opacity-80 bg-[#121826] pt-[15px] pb-[160px] mx-7 mr-auto rounded-md bg-opacity-0"
           type="text"
-          onChange={inputValueHandler}
-          value={inputValue}
+          value={data}
           maxLength={500}
         />
         <div className="flex items-center justify-center px-5 pb-6 w-[550px]">

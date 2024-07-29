@@ -1,23 +1,35 @@
 "use client"
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
 export default function TranslateFrom() {
+  
+  const [segment, setSeegment] = useState("");
+  const [data , setData] = useState("");
 
-    const [inputValue , setInputValue] = useState("Hello, how are you?");
-
-    function inputValueHandler(event){
-        setInputValue(event.target.value);
+  useEffect(() => {
+    async function fetchData() {
+        const response = await fetch(`https://api.mymemory.translated.net/get?q=${segment}&langpair=en|it`);
+        const data = await response.json();
+        setData(data);
     }
+
+    fetchData();
+  }, [segment]);
+
+  function segHandler(event){
+    setSeegment(event.target.value);
+  }
+  console.log(data);
 
     return (
       <div className="w-[560px] z-10 font-dm-sans font-semibold flex flex-col justify-center items-center bg-[#121826cc] rounded-[20px] bg-opacity-5">
         
         <div className="flex justify-center items-center pt-7 pl-7 mr-auto">
-          <div className="flex text-[15px] text-[#626874] gap-x-6  text-opacity-70 mr-auto">
-            <button>Detect Language</button>
-            <button>English</button>
-            <button>French</button>
-            <button>Spanish</button>
+          <div className="flex text-[15px] text-[#626874] gap-x-[5px]  text-opacity-70 mr-auto">
+            <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">Detect Language</button>
+            <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">English</button>
+            <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">French</button>
+            <button className="hover:bg-[#4d5461] hover:text-[#f4f6f8] rounded-[10px] py-2 px-2 duration-300">Spanish</button>
           </div>
           <svg className="ml-[10px]"  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 6L8 10L4 6" stroke="#6C727F" stroke-width="2"/>
@@ -28,9 +40,9 @@ export default function TranslateFrom() {
         <input 
           className="text-[#F1F2F3] border-none outline-none w-[500px] text-opacity-80 bg-[#121826] pb-[124px] mx-7 mr-auto rounded-md bg-opacity-0"
           type="text"
-          onChange={inputValueHandler}
-          value={inputValue}
           maxLength={500}
+          value={segment}
+          onChange={segHandler}
         />
         <p className="text-[#626874] text-opacity-70 text-[13px] ml-auto pr-6">15/500</p>
 
@@ -50,7 +62,7 @@ export default function TranslateFrom() {
               </svg>
             </div>
           </div>
-          <button className="flex items-center justify-center ml-auto text-white text-[15px] bg-[#3662E2] rounded-[6px] py-2 px-4">
+          <button className="flex items-center justify-center ml-auto text-white text-[15px] bg-[#3662E2] hover:bg-[#273f88] rounded-[6px] py-2 px-4 duration-300">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 20H18" stroke="#F9FAFB" stroke-width="2"/>
               <path d="M9 12H15" stroke="#F9FAFB" stroke-width="2"/>
