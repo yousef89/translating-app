@@ -1,10 +1,8 @@
 "use client"
 import { useState , useEffect } from "react";
 
-export default function TranslateFrom() {
+export default function TranslateFrom({segment , setSegment ,data , setData}) {
   
-  const [segment, setSeegment] = useState("");
-  const [data , setData] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -17,7 +15,7 @@ export default function TranslateFrom() {
   }, [segment]);
 
   function segHandler(event){
-    setSeegment(event.target.value);
+    setSegment(event.target.value);
   }
   console.log(data);
 

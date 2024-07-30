@@ -5,7 +5,8 @@ import TranslateTo from "./translateTo";
 
 export default function Home() {
 
-
+  const [segment, setSegment] = useState("Hello, how are you?");
+  const [data , setData] = useState("");
   
 
   return (
@@ -25,8 +26,8 @@ export default function Home() {
       </svg>
 
       <div className="flex gap-x-4">
-      <TranslateFrom />
-      <TranslateTo/>
+      <TranslateFrom setSegment = {setSegment} segment = {segment} data = {data} setData = {setData}/>
+      <TranslateTo data = {data}/>
       </div>
     </div>
   );

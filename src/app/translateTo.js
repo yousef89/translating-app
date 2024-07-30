@@ -31,8 +31,7 @@ export default function TranslateTo({data}) {
         <input 
           className="text-[#F1F2F3] border-none outline-none w-[500px] text-opacity-80 bg-[#121826] pt-[15px] pb-[160px] mx-7 mr-auto rounded-md bg-opacity-0"
           type="text"
-          value={data}
-          maxLength={500}
+          value={data.responseData ? data.responseData.translatedText : ''}
         />
         <div className="flex items-center justify-center px-5 pb-6 w-[550px]">
           <div className="flex gap-x-2 mr-auto">
