@@ -7,6 +7,12 @@ export default function Home() {
 
   const [segment, setSegment] = useState("Hello, how are you?");
   const [data , setData] = useState("");
+  const [secLanguage , setSecLanguage] = useState("fr");
+  const [text1 , setText1] = useState(segment);
+  const [copy , setCopy] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
+  
+  
   
 
   return (
@@ -26,8 +32,8 @@ export default function Home() {
       </svg>
 
       <div className="flex gap-x-4">
-      <TranslateFrom setSegment = {setSegment} segment = {segment} data = {data} setData = {setData}/>
-      <TranslateTo data = {data}/>
+      <TranslateFrom setSegment = {setSegment} segment = {segment} data = {data} setData = {setData} secLanguage = {secLanguage} text1 = {text1} copy = {copy} showMessage = {showMessage}/>
+      <TranslateTo data = {data} secLanguage = {secLanguage} setSecLanguage = {setSecLanguage} segment = {segment} copy = {copy} showMessage = {showMessage}/>
       </div>
     </div>
   );
